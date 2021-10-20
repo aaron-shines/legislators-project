@@ -17,7 +17,7 @@ app.use(cors(corsOptions));
 // This displays message that the server running and listening to the specified port
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-// Get all legislators endpoint
+// Get all legislators image endpoint
 app.get("/get-legislator-img/:bioguide", async (req, res) => {
   const { bioguide } = req.params;
   let url = `https://theunitedstates.io/images/congress/225x275/${bioguide}.jpg`;
