@@ -1,0 +1,38 @@
+.Header {
+  background: white;
+  border-bottom: 1px solid #d1d1d5;
+  margin-bottom: 0.5px;
+  height: 8vh;
+
+  &__container{
+    height: 100%;
+    padding: 0 71px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: auto;
+    height: 100%;
+    margin: 0 auto;
+  }
+  
+  &__logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+
+      span {
+        color: black;
+        letter-spacing: 2px;
+        font-size: 1.2rem;
+      }
+      
+    }
+  }
+
+}

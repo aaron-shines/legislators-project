@@ -1,0 +1,127 @@
+.LegislatorsPage {
+  height: 92vh;
+
+  &__filter-and-sorting-area {
+    display: flex;
+    justify-content: space-between;
+    padding: 22px 64px;
+  }
+
+  &__sortBy-wrapper{     
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 300;
+    vertical-align: top;
+  }
+
+  &__filterBy-area {
+    select {
+      font-size: 1rem;
+      font-weight: 300;
+      margin-right: 15px;
+      vertical-align: top;
+    }
+  }
+
+  &__legislator-field {
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 10px;
+    color: black;
+  }
+
+  &__legislator-img {
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    position: relative;
+    min-height: 200px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover !important;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  &__legislators-section{
+    margin-bottom: 80px;
+  }
+
+  &__legislators{
+    display: block;
+    padding: 0 50px;
+    background: white;
+    height: 565px;
+    overflow: auto;
+    margin-bottom: 30px;
+  }
+
+  &__legislator{
+    background: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1);
+    -moz-box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1);
+    box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1);
+  }
+
+  &__bottom-info{
+    padding: 20px 15px;
+    margin-bottom: 20px;
+
+  }
+
+  &__pagination-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  &__pagination-row{
+    display: flex;
+    justify-content: center;
+  }
+
+  &__pagination-ul {
+    border: 1px solid lightgrey;
+    display: inline-block;
+    background: white;
+    -webkit-box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1);
+    -moz-box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1);
+    box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1);
+    padding: 0;
+    width: auto;
+
+    li {
+      padding: 20px 30px;
+      display: inline-block;
+
+      &.active,
+      &:hover {
+        color: white;
+        font-weight: 700;
+        background: #b5cadd;
+        cursor: pointer;
+      }
+
+    }
+  }
+
+  &__pagination-li {
+
+  }
+
+  &__loader-wrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 99;
+  }
+}
