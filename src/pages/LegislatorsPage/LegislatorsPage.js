@@ -461,18 +461,25 @@ const LegislatorsPage = () => {
               >
                 1
               </li>
+
               <li
                 className={`LegislatorsPage__pagination-li ${
                   filterSettings.currentPage === 2 ? "active" : ""
                 }`}
                 onClick={() => {
                   changePage(
-                    { ...filterSettings, currentPage: 2 },
+                    {
+                      ...filterSettings,
+                      currentPage:
+                        filterSettings.currentPage > 3
+                          ? filterSettings.currentPage - 1
+                          : 2,
+                    },
                     filteredLegislators
                   );
                 }}
               >
-                2
+                {filterSettings.currentPage > 3 ? "..." : 2}
               </li>
               <li
                 className={`LegislatorsPage__pagination-li ${
@@ -480,12 +487,20 @@ const LegislatorsPage = () => {
                 }`}
                 onClick={() => {
                   changePage(
-                    { ...filterSettings, currentPage: 3 },
+                    {
+                      ...filterSettings,
+                      currentPage:
+                        filterSettings.currentPage > 3
+                          ? filterSettings.currentPage - 1
+                          : 3,
+                    },
                     filteredLegislators
                   );
                 }}
               >
-                3
+                {filterSettings.currentPage > 3
+                  ? filterSettings.currentPage - 1
+                  : 3}
               </li>
               <li
                 className={`LegislatorsPage__pagination-li ${
@@ -493,25 +508,83 @@ const LegislatorsPage = () => {
                 }`}
                 onClick={() => {
                   changePage(
-                    { ...filterSettings, currentPage: 4 },
+                    {
+                      ...filterSettings,
+                      currentPage:
+                        filterSettings.currentPage > 3
+                          ? filterSettings.currentPage - 1
+                          : 4,
+                    },
                     filteredLegislators
                   );
                 }}
               >
-                4
+                {filterSettings.currentPage > 3
+                  ? filterSettings.currentPage
+                  : 4}
               </li>
+
+              {/* this is the additional div when current page is greater than 3 */}
+              {filterSettings.currentPage > 3 && (
+                <li
+                  className={`LegislatorsPage__pagination-li ${
+                    filterSettings.currentPage ===
+                    filterSettings.currentPage + 1
+                      ? "active"
+                      : ""
+                  }`}
+                  onClick={() => {
+                    changePage(
+                      {
+                        ...filterSettings,
+                        currentPage:
+                          filterSettings.currentPage > 3
+                            ? filterSettings.currentPage + 1
+                            : 4,
+                      },
+                      filteredLegislators
+                    );
+                  }}
+                >
+                  {filterSettings.currentPage > 3
+                    ? filterSettings.currentPage + 1
+                    : 4}
+                </li>
+              )}
+              {/* this is the additional div when current page is greater than 3 */}
+              {filterSettings.currentPage > 3 && (
+                <li
+                  className={`LegislatorsPage__pagination-li ${
+                    filterSettings.currentPage === 2 ? "active" : ""
+                  }`}
+                  onClick={() => {
+                    changePage(
+                      {
+                        ...filterSettings,
+                        currentPage:
+                          filterSettings.currentPage > 3
+                            ? filterSettings.currentPage - 1
+                            : 2,
+                      },
+                      filteredLegislators
+                    );
+                  }}
+                >
+                  {filterSettings.currentPage > 3 ? "..." : 2}
+                </li>
+              )}
               <li
                 className={`LegislatorsPage__pagination-li ${
                   filterSettings.currentPage === 5 ? "active" : ""
                 }`}
                 onClick={() => {
                   changePage(
-                    { ...filterSettings, currentPage: 5 },
+                    { ...filterSettings, currentPage: currentAmtOfPages },
                     filteredLegislators
                   );
                 }}
               >
-                5
+                {currentAmtOfPages}
               </li>
               <li
                 onClick={() => {
