@@ -15,19 +15,17 @@ The second endpoint used to retreive a jpeg image of a specific legislator, conv
 
 To run this application you will need to git clone this remove
 
-### `git clone`
-
 Then you will need to cd into the root of the directory. 
 
 Then you need to run npm install there
 
 ### `npm install`
 
-Once you have npm install at the root of the project. You will need to go to the /backend folder and run npm install once again 
+Once you have npm installed at the root of the project. You will need to go to the /backend folder and run npm install once again 
 
 ### `npm install`
 
-Now that you have downloaded all dependicies to run the application you will want to run the command below twice.
+Now that you have downloaded all dependencies to run the application you will want to run the command below twice.
 
 Once in the /backend directory as well and once at the root of the project directory
 
