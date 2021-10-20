@@ -21,13 +21,9 @@ Then you need to run npm install there
 
 ### `npm install`
 
-Once you have npm installed at the root of the project. You will need to go to the /backend folder and run npm install once again 
+Once you have ran the npm install command at the root of the project. You will need to go to the /backend folder and run npm install once again 
 
-### `npm install`
-
-Now that you have downloaded all dependencies to run the application you will want to run the command below twice.
-
-Once in the /backend directory as well and once at the root of the project directory
+Now that you have downloaded all dependencies to run the application you will want to run "npm run dev" the command twice, once at the root of the /backend directory as well and once at the root of the project directory
 
 ### `npm run dev`
 
