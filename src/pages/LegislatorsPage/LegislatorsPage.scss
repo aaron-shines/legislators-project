@@ -7,7 +7,7 @@
     padding: 22px 64px;
   }
 
-  &__sortBy-wrapper{     
+  &__sortBy-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,11 +50,11 @@
     border-top-right-radius: 5px;
   }
 
-  &__legislators-section{
+  &__legislators-section {
     margin-bottom: 80px;
   }
 
-  &__legislators{
+  &__legislators {
     display: block;
     padding: 0 50px;
     background: white;
@@ -63,7 +63,7 @@
     margin-bottom: 30px;
   }
 
-  &__legislator{
+  &__legislator {
     background: #fff;
     border-radius: 5px;
     -webkit-box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1);
@@ -71,10 +71,9 @@
     box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1);
   }
 
-  &__bottom-info{
+  &__bottom-info {
     padding: 20px 15px;
     margin-bottom: 20px;
-
   }
 
   &__pagination-container {
@@ -84,7 +83,7 @@
     width: 100%;
   }
 
-  &__pagination-row{
+  &__pagination-row {
     display: flex;
     justify-content: center;
   }
@@ -98,6 +97,7 @@
     box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1);
     padding: 0;
     width: auto;
+    user-select: none;
 
     li {
       padding: 20px 30px;
@@ -110,15 +110,13 @@
         background: #b5cadd;
         cursor: pointer;
       }
-
     }
   }
 
   &__pagination-li {
-
   }
 
-  &__loader-wrapper{
+  &__loader-wrapper {
     position: absolute;
     top: 50%;
     left: 50%;

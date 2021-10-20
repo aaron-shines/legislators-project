@@ -12,7 +12,7 @@ const LegislatorsPage = () => {
     currentPage: 1,
     party: "all",
     state: "all",
-    sortBy: "nameASC"
+    sortBy: "nameASC",
   });
   const [currentAmtOfPages, setCurrentAmtOfPages] = useState(0);
   const [legislators, setLegislators] = useState([]);
@@ -58,6 +58,10 @@ const LegislatorsPage = () => {
     return legislatorsResponse.data.legislators;
   };
 
+  ///////////////////////////////////////////////////////////////////
+  // paginating, filtering and sorting functions are below are below
+  ///////////////////////////////////////////////////////////////////
+
   // function get an array of paginatedLegislators
   const getPaginatedLegislators = (filterSettings, legislators) => {
     const { amtOfLegislatorsPerPage, currentPage } = filterSettings;
@@ -73,13 +77,13 @@ const LegislatorsPage = () => {
         paginatedLegislators.push(legislators[i]);
       }
     }
-  
+
     // Setting amount Of Pages for this search (maybe move this to a different place)
-    setCurrentAmtOfPages(Math.round(legislators.length / filterSettings.amtOfLegislatorsPerPage))
+    setCurrentAmtOfPages(
+      Math.round(legislators.length / filterSettings.amtOfLegislatorsPerPage)
+    );
     return paginatedLegislators;
   };
-
-
 
   // filter function below
   const filterLegislators = (filterSettings, legislators) => {
@@ -122,9 +126,7 @@ const LegislatorsPage = () => {
       newSortedLegislators.sort(function (a, b) {
         let item1 = a.name.first.toLowerCase();
         let item2 = b.name.first.toLowerCase();
-        if (item1 < item2)
-          //sort string ascending
-          return -1;
+        if (item1 < item2) return -1;
         if (item1 > item2) return 1;
         return 0; //default return value (no sorting)
       });
@@ -132,51 +134,41 @@ const LegislatorsPage = () => {
       newSortedLegislators.sort(function (a, b) {
         let item1 = a.name.first.toLowerCase();
         let item2 = b.name.first.toLowerCase();
-        if (item1 > item2)
-          //sort string ascending
-          return -1;
+        if (item1 > item2) return -1;
         if (item1 < item2) return 1;
-        return 0; //default return value (no sorting)
+        return 0;
       });
     } else if (filterSettings.sortBy === "state") {
       newSortedLegislators.sort(function (a, b) {
         let item1 = a.terms[0].state.toLowerCase();
         let item2 = b.terms[0].state.toLowerCase();
-        if (item1 < item2)
-          //sort string ascending
-          return -1;
+        if (item1 < item2) return -1;
         if (item1 > item2) return 1;
-        return 0; //default return value (no sorting)
+        return 0;
       });
     } else if (filterSettings.sortBy === "party") {
       newSortedLegislators.sort(function (a, b) {
         let item1 = a.terms[0].party.toLowerCase();
         let item2 = b.terms[0].party.toLowerCase();
-        if (item1 < item2)
-          //sort string ascending
-          return -1;
+        if (item1 < item2) return -1;
         if (item1 > item2) return 1;
-        return 0; //default return value (no sorting)
+        return 0;
       });
     } else if (filterSettings.sortBy === "numOfTermsASC") {
       newSortedLegislators.sort(function (a, b) {
         let item1 = a.terms.length;
         let item2 = b.terms.length;
-        if (item1 < item2)
-          //sort string ascending
-          return -1;
+        if (item1 < item2) return -1;
         if (item1 > item2) return 1;
-        return 0; //default return value (no sorting)
+        return 0;
       });
     } else if (filterSettings.sortBy === "numOfTermsDESC") {
       newSortedLegislators.sort(function (a, b) {
         let item1 = a.terms.length;
         let item2 = b.terms.length;
-        if (item1 > item2)
-          //sort string ascending
-          return -1;
+        if (item1 > item2) return -1;
         if (item1 < item2) return 1;
-        return 0; //default return value (no sorting)
+        return 0;
       });
     }
 
@@ -184,6 +176,9 @@ const LegislatorsPage = () => {
     return newSortedLegislators;
   };
 
+  ////////////////////////////////////////////////////
+  // On input change functions are below
+  ////////////////////////////////////////////////////
   const changePage = (filterSettings, legislators) => {
     setFilterSettings(filterSettings);
 
@@ -197,7 +192,11 @@ const LegislatorsPage = () => {
 
   const onFilterChange = (event, filterSettings, legislators) => {
     const { value, name } = event.target;
-    let newfilterSettings = { ...filterSettings, [name]: value, currentPage: 1 };
+    let newfilterSettings = {
+      ...filterSettings,
+      [name]: value,
+      currentPage: 1,
+    };
     setFilterSettings(newfilterSettings);
 
     const newSortedLegislators = sortLegislators(
@@ -216,19 +215,19 @@ const LegislatorsPage = () => {
       filteredLegislators
     );
     setPaginatedLegislators(paginatedLegislators);
-
   };
 
   const onSortingTypeChange = (event, filterSettings, legislators) => {
     const { value, name } = event.target;
 
-    let newfilterSettings = { ...filterSettings, [name]: value, currentPage: 1 };
+    let newfilterSettings = {
+      ...filterSettings,
+      [name]: value,
+      currentPage: 1,
+    };
     setFilterSettings(newfilterSettings);
 
-    const sortedLegislators = sortLegislators(
-      newfilterSettings,
-      legislators
-    );
+    const sortedLegislators = sortLegislators(newfilterSettings, legislators);
 
     const filteredLegislators = filterLegislators(
       newfilterSettings,
@@ -243,7 +242,7 @@ const LegislatorsPage = () => {
     setPaginatedLegislators(paginatedLegislators);
   };
 
-  console.log("currentAmtOfPages", currentAmtOfPages)
+  console.log("currentAmtOfPages", currentAmtOfPages);
   return (
     <div className="LegislatorsPage">
       <div className="LegislatorsPage__container container">
@@ -336,7 +335,6 @@ const LegislatorsPage = () => {
                 <option value="WY">Wyoming</option>
               </select>
             </label>
-
           </div>
           <div className="LegislatorsPage__sortBy-wrapper">
             <label htmlFor="sort-by-select" className="sort-by-label">
@@ -344,7 +342,6 @@ const LegislatorsPage = () => {
 
               <select
                 autoComplete="off"
-  
                 id="sort-by-select"
                 name="sortBy"
                 className="sortby"
@@ -352,13 +349,9 @@ const LegislatorsPage = () => {
                   onSortingTypeChange(event, filterSettings, legislators);
                 }}
               >
-                <option value="nameASC">
-                  Name (A to Z)
-                </option>
+                <option value="nameASC">Name (A to Z)</option>
 
-                <option value="nameDESC">
-                  Name (Z to A)
-                </option>
+                <option value="nameDESC">Name (Z to A)</option>
                 <option value="state">State</option>
                 <option value="party">Party</option>
                 <option value="numOfTermsASC">Num Of Terms Served (ASC)</option>
@@ -369,10 +362,7 @@ const LegislatorsPage = () => {
             </label>
           </div>
         </section>
-        <section
-       
-          className="col-sm-12 col-md-12 col-lg-12 LegislatorsPage__legislators"
-        >
+        <section className="col-sm-12 col-md-12 col-lg-12 LegislatorsPage__legislators">
           {isLoading && (
             <div className="LegislatorsPage__loader-wrapper">
               <Loader
@@ -411,7 +401,6 @@ const LegislatorsPage = () => {
                             <span className="LegislatorsPage__legislator-field">
                               Party: {legislator.terms[0].party}
                             </span>
-
                             <span className="LegislatorsPage__legislator-field">
                               Type:&nbsp;
                               {(() => {
